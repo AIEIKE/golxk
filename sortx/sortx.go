@@ -46,3 +46,19 @@ func CockTailSort(a []int) {
 		}
 	}
 }
+
+func QuickSort(a []int, startIndex, endIndex int) {
+	if startIndex >= endIndex {
+		return
+	}
+	markIndex := startIndex
+	for i := markIndex + 1; i <= endIndex; i++ {
+		if a[i] < a[startIndex] {
+			markIndex += 1
+			a[markIndex], a[i] = a[i], a[markIndex]
+		}
+	}
+	a[markIndex], a[startIndex] = a[startIndex], a[markIndex]
+	QuickSort(a, startIndex, markIndex-1)
+	QuickSort(a, markIndex+1, endIndex)
+}
